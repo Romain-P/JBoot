@@ -1,5 +1,7 @@
 buildscript {
     ext.jetty = '1.5.8.RELEASE'
+    ext.jtwig = '5.86.1.RELEASE'
+    ext.lombok = '1.16.18'
 
     repositories {
         mavenCentral()
@@ -26,11 +28,13 @@ repositories {
 }
 
 dependencies {
+    compile "org.jtwig:jtwig-spring-boot-starter:$jtwig"
+    compileOnly "org.projectlombok:lombok:$lombok"
+
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
     compile("org.springframework.boot:spring-boot-starter-jetty")
     compile("org.springframework.boot:spring-boot-starter-actuator")
-
     testCompile("junit:junit")
 }
